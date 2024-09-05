@@ -1,4 +1,4 @@
-import React, { createContext , useReducer } from React
+import React, { createContext , useReducer } from 'react'
 import AppReducer from './AppReducer'
 
 //Initial state
@@ -19,7 +19,7 @@ export const GlobalContext=createContext(initialState);
 //Provider component
 
 export const GlobalProvider =({ children })=>{
-    const [state, dispatch]= useReducer( AppReducer, initialState);
+    const [state, dispatch]= useReducer( AppReducer, initialState);  //useReducer needs a reducer function to determine how the state should be updated when an action is dispatched
 
     return (<GlobalContext.Provider value={{
         transactions:state.transactions

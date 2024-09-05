@@ -7,8 +7,7 @@ import { AddTransaction } from './components/AddTransaction'
 import { GlobalProvider } from './context/GlobalState';
 
 function App() {
-  const income = 500;
-  const expenses = 200;
+ 
   return (
     <GlobalProvider>
       <Header />
