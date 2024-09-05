@@ -7,18 +7,18 @@ export const IncomeExpenses = () => {
   const {transactions} = useContext(GlobalContext);
   //map through each value of transaction. If it is +ve, it gets added
   //Income. If -ve, it gets added to expense
-  let income;
-  let expense;
-  transactions.forEach((transaction)=>{
-    if (transaction.amount>0)
-      {
-        income+= transaction.amount
-      }
-    else if(transaction.amount<0)
-     {
-        expense-=transaction.amount
-     }
-  })
+
+  const amounts = transactions.map(transaction=>transaction.amount)
+
+  const expense = (amounts.filter(item=>item<0).reduce((acc, item)=>(acc+=item), 0) * 
+  -1
+  ).toFixed(2);
+
+ const income = amounts
+    .filter(item => item > 0)
+    .reduce((acc, item) => (acc += item), 0)
+    .toFixed(2);
+
   return (
     <div>
       <div className="inc-exp-container">
