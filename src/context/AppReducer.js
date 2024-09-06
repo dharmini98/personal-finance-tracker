@@ -8,6 +8,11 @@ export default (state, action)=>{
                 transactions: state.transactions.filter(transaction=>
                     transaction.id!==action.payload)
             }
+        case 'ADD_TRANSACTION':
+            return{
+                ...state,
+                trasactions: [action.payload, ...state.trasactions]
+            }
 
         default:
             return state;
