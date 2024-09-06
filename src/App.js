@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import { Header } from './components/Header'
 import { Balance } from './components/Balance'
@@ -6,6 +7,7 @@ import { TransactionList } from './components/TransactionList'
 import { AddTransaction } from './components/AddTransaction'
 import { GlobalProvider } from './context/GlobalState';
 import { CurrencyConverter } from './components/CurrencyConverter';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
  
@@ -14,15 +16,19 @@ function App() {
       <Router>
       <Header />
       <div className="container">
-        <Switch>
-        <Route exact path="/">
+        <Routes>
+        <Route exact path="/"
+        element={
+        <>
         <Balance/>
         <IncomeExpenses/>
         <TransactionList/>
         <AddTransaction/>
-        </Route>
-        <Route path="/currency-converter" component={CurrencyConverter}/>
-        </Switch>
+        </>
+        }
+        />
+        <Route path="/currency-converter" element={CurrencyConverter}/>
+        </Routes>
       </div>
       </Router>
     </GlobalProvider>
