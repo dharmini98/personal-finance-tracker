@@ -9,11 +9,18 @@ export const CurrencyConverter = () => {
     const [targetCurrency, setTargetCurrency]=useState('INR');
     const [convertedIncome, setConvertedIncome]=useState(0);
     const [convertedExpenses, setConvertedExpenses]=useState(0);
+    const API_KEY=process.env.REACT_APP_EXCHANGE_RATE_API_KEY
 
     useEffect(()=>{
-      fetch(`https://api.exchangerate.host/latest?base=${baseCurrency}`)
-      .then((response)=>response.json())
-      .then((data)=>setExchangeRates(data.rates))
+      fetch(`https://v6.exchangerate-api.com/v6/${API_KEY}/latest/${baseCurrency}`)
+      .then((response)=>{
+        if (!response.ok) {
+          throw new Error('Failed to fetch exchange rates');
+        }
+        return response.json()})
+      .then((data)=>{
+        console.log('Exchange Rates:', data.conversion_rates);
+        setExchangeRates(data.conversion_rates)})
       .catch((error)=>console.error('Error fetching exchange rates:', error));
     }, [baseCurrency]);
 
@@ -69,5 +76,4 @@ export const CurrencyConverter = () => {
         </div>
       );
     };
-
 export default CurrencyConverter;

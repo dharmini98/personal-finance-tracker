@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 
 
-export const IncomeExpenses = () => {
+const IncomeExpenses = () => {
 
   const {transactions} = useContext(GlobalContext);
   //map through each value of transaction. If it is +ve, it gets added
@@ -35,4 +35,4 @@ export const IncomeExpenses = () => {
   )
 }
 
-export default IncomeExpenses
+export default IncomeExpenses;

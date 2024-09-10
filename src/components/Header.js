@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Header = () => {
+const Header = () => {
   return (
     <h2>
       Expense Tracker
@@ -8,4 +8,4 @@ export const Header = () => {
   )
 }
 
-export default Header
+export default Header;
