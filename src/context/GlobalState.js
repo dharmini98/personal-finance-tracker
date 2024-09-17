@@ -15,7 +15,10 @@ const initialState ={
       { id: 7, text: 'Student Loan', amount: -1000},
       { id: 8, text: 'Insurance', amount: -400},
       { id: 9, text: 'Groceries', amount: -300},
-    ]
+    ],
+    baseCurrency:'USD',
+    targetCurrency: 'INR',
+    exchangeRates: {},
     
 }
 
@@ -45,10 +48,34 @@ export const GlobalProvider =({ children })=>{
         }
        );
     }
+    function setBaseCurrency(currency){
+        dispatch({
+            type:'SET_BASE_CURRENCY',
+            payload: currency,
+        });
+    }
+    function setTargetCurrency(currency){
+        dispatch({
+            type:'SET_TARGET_CURRENCY',
+            payload:currency,
+        })
+    }
+    function setExchangeRates(rates){
+       dispatch({
+             type:'SET_EXCHANGE_RATE',
+             payload: rates,
+       })
+    }
     return (<GlobalContext.Provider value={{
         transactions:state.transactions,
+        baseCurrency:state.baseCurrency,
+        targetCurrency:state.targetCurrency,
+        exchangeRates:state.exchangeRates,
         deleteTransaction,
-        addTransaction
+        addTransaction,
+        setBaseCurrency,
+        setTargetCurrency,
+        setExchangeRates,
     }}>
         {children}
     </GlobalContext.Provider>

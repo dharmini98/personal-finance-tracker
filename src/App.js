@@ -27,7 +27,7 @@ function App() {
         </>
         }
         />
-        <Route exact path="/currency-converter" element={<CurrencyConverter/>}/>
+        <Route exact path="/settings" element={<CurrencyConverter/>}/>
         </Routes>
       </div>
       </Router>

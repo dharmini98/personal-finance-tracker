@@ -11,7 +11,24 @@ export default (state, action)=>{
         case 'ADD_TRANSACTION':
             return{
                 ...state,
-                trasactions: [action.payload, ...state.trasactions]
+                transactions: [action.payload, ...state.transactions]
+            }
+
+        case 'SET_BASE_CURRENCY':
+            return{
+                ...state,
+                transactions: action.payload,
+            }
+        
+        case 'SET_TARGET_CURRENCY':
+            return{
+                    ...state,
+                    transactions: action.payload,
+            }
+        case 'SET_EXCHANGE_RATES':
+            return{
+                ...state,
+                exchangeRates: action.payload,
             }
 
         default:
